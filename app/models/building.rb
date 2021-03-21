@@ -23,4 +23,8 @@ class Building < ApplicationRecord
     number_of_floors_available.map { |f| offices.build(floor: f) }
   end
 
+  def current_income
+    self.rent_per_floor*self.offices.count
+  end
+
 end
