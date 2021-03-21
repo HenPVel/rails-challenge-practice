@@ -4,5 +4,11 @@
 <% @buildings.each do |b| %>
     
         <li><%= link_to b.name, building_path(b) %></li>
+        <h4>Available Floors:</h4>
+        <ul>
+                <% b.number_of_floors_available.each do |f| %>
+                        <li><%= f %></li>
+                <% end %>
+        </ul><br>
 <%end%>
-</ul>
+</ul><br>

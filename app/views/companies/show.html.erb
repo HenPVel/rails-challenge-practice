@@ -1,0 +1,23 @@
+<h1><%= @company.name %> Details:</h1>
+<h3>Locations:</h3><br>
+<% if @company.offices.any? %>
+  <% @company.offices.each do |office| %>
+    <ul>
+      <li><%= link_to office.building.name, building_path(office.building) %></li>
+      <ul>
+        <li>Address: <%= office.building.address %></li>
+        <li>Country: <%= office.building.country %>
+        <li>Floor: <%= office.floor %>
+      </ul>
+    </ul>
+  <% end %>
+<% else %>
+  <p><strong>No locations</strong></p>
+<% end %>
+<h3>Employees:</h3><br>
+<% @company.employees.each do |e| %>
+  <ul>
+    <li><%= link_to e.name, employee_path(e) %>, <%= e.title %> </li>
+  </ul>
+<% end %>
+<%= button_to "Add New Employee", new_employee_path(@company), method: :get %>
